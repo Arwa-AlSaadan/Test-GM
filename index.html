@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <title>Simple Polygon</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      /**
+       * @license
+       * Copyright 2019 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+      // This example creates a simple polygon representing the Bermuda Triangle.
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 20,
+          center: { lat: 24.854016567156265, lng: 46.71188482485445 },
+        //   mapTypeId: "satellite",
+
+          mapTypeId: "terrain",
+
+        });
+        // Define the LatLng coordinates for the polygon's path.
+        const triangleCoords = [
+          { lat: 24.854416567156265, lng: 46.71148482485445 },
+          { lat: 24.854616567156265, lng: 46.71208482485445 },
+          { lat: 24.853616567156265, lng: 46.71198482485445 },
+          { lat: 24.854416567156265, lng: 46.71148482485445 },
+        ];
+        // Construct the polygon.
+        const bermudaTriangle = new google.maps.Polygon({
+          paths: triangleCoords,
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: "#FF0000",
+          fillOpacity: 0.35,
+        });
+
+        bermudaTriangle.setMap(map);
+      }
+
+      // تحميل Google Charts واستدعاء الدالة الرئيسية
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(initMap);
+    </script>
+    <style>
+      /**
+       * @license
+       * Copyright 2019 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+      /** 
+       * Always set the map height explicitly to define the size of the div element
+       * that contains the map. 
+       */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj6Z0Nc3kdfc0KTG2ttumKZssMh6ioQO8&callback=initMap&v=weekly"
+    defer
+    ></script>
+  </body>
+</html>
